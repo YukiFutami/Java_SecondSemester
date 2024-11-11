@@ -52,28 +52,28 @@ public class spClass1030_02 {
 //            System.out.println(vale + " ");
 //
 
-//　配列内全体の元素の中で、最大値と最小値を出力し、平均値を出力
-
-        // 配列を作る
-        int bar[];
-        for (int vale : bar) {
-            System.out.println(vale + " ");
-        }
-
-        int maxnum = 0;
-        // int rownum ;
-
-        // forの中でbarの数に対して繰り返し確認する
-        for (int i = 0; i < bar.length; i++) {
-//            bar[i] = num;
-
-            //　最大値の確認
-            if (maxnum > bar[i]){
-                System.out.println(maxnum + " ");
-            }
-        }
-        //　最小値の確認　// まとめてforで確認できるので確認する
-        //　平均値の確認　（）/　４
+////　配列内全体の元素の中で、最大値と最小値を出力し、平均値を出力
+//
+//        // 配列を作る
+//        int bar[];
+//        for (int vale : bar) {
+//            System.out.println(vale + " ");
+//        }
+//
+//        int maxnum = 0;
+//        // int rownum ;
+//
+//        // forの中でbarの数に対して繰り返し確認する
+//        for (int i = 0; i < bar.length; i++) {
+////            bar[i] = num;
+//
+//            //　最大値の確認
+//            if (maxnum > bar[i]){
+//                System.out.println(maxnum + " ");
+//            }
+//        }
+//        //　最小値の確認　// まとめてforで確認できるので確認する
+//        //　平均値の確認　（）/　４
 
 
     }
