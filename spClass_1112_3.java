@@ -12,29 +12,19 @@ public class spClass_1112_3 {
         System.out.println("Enter N: ");
         int n = sc.nextInt();
 
-//        for (int i = 0; i < m; i++) {
-//            for (int j = 0; j < n; j++) {
-//                // space
-//                if (i == j || i + j == m - 1) {
-//                    System.out.print(" ");
-//                } else {
-//                    System.out.print("*");
-//                }
-//            }
-//        }
-
-
-        for(int i = 0; i < m; i++) {
+        for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-
-                if (i + j == m - 1) {
-                    System.out.print(" \t");
+                // space
+                if (i == j) {
+                    System.out.print(" ");
+                } else if (i + j == m - 1) {
+                    System.out.print(" ");
                 } else {
-                    System.out.print("*\t");
+                    System.out.print("*");
                 }
             }
 
-            System.out.println();
+        System.out.println();
         }
     }
 }
