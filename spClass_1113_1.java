@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class spClass_1113_1 {
     public static void main(String[] args){
+
         // 메뉴를 선택하세요
         // 1. M X N Matrix를 출력
         // 2. 좌상단->우하단 대각선 삭제 후 M X N Matrix 출력
@@ -31,14 +32,18 @@ public class spClass_1113_1 {
         //     *
         //  예외처리 : M과 N이 0 또는 음의 정수인 경우, 재입력
 
+
+        // 메뉴를 입력 받아 해당 프로그램 실행 후 다시 메뉴 출력
         Scanner scan = new Scanner(System.in);
 
+        //　ゲームカウント回数 １回目の実行から数える
         int gameCount = 1;
 
-        int m = 0, n = 0;
+        // 入力値の初期化
+        int m, n;
 
-
-        while(true){
+        while (true) {
+            // メニュー画面
             System.out.println("ゲーム回数: " + gameCount);
             System.out.println("=================");
             System.out.println("1. M X N Matrix를 출력");
@@ -48,41 +53,80 @@ public class spClass_1113_1 {
             System.out.println("=================");
             System.out.print("메뉴를 선택하세요: ");
 
-            System.out.print("메뉴를 입력: ");
-            int menu = scan.nextInt();
+            int menuNum = 0;
 
-            String menuLabel = switch(menu){
-                case 1 -> "1번 실행";
-                case 2 -> "2번 실행";
-                case 3 -> "3번 실행";
-                case 4 -> "4번 실행";
-                default -> "재입력";
-            };
-            System.out.println(menuLabel);
+            // 入力
+            while (true) {
+                menuNum = scan.nextInt();
+                //　１～３以外の場合
+                if (menuNum >= 1 && menuNum <= 4) {
+                    break;
+                }
+                System.out.println("재입력");
+            }
 
-            if(menu == 4){
+            //　例外処理　４の場合
+            if (menuNum == 4) {
+                System.out.println(menuNum + "종료");
                 break;
             }
 
-            else if(menu == 1){
-                // 1번 : 사용자로부터 M, N 정수를 입력 받아, M X N Matrix를 출력하세요
-                // 예) M : 3, N : 2
-                //   * *
-                //   * *
-                //   * *
-                //  예외처리 : M과 N이 0 또는 음의 정수인 경우, 재입력
+            while (true) { // 例外処理の組み込み
+                System.out.print("M 정수를 입력: ");
+                m = scan.nextInt();
 
+                System.out.print("N 정수를 입력: ");
+                n = scan.nextInt();
+
+                if (m > 0 && n > 0) {
+                    break;
+                }
+
+                System.out.println("양수를 입력하세요");
             }
-            else if(menu == 2){
-                System.out.println(2);
+
+            //　条件式
+            // 1번 : 사용자로부터 M, N 정수를 입력 받아, M X N Matrix를 출력하세요
+            if (menuNum == 1) {
+                for (int i = 0; i < m; i++) {
+                    for (int j = 0; j < n; j++) {
+                        System.out.print("*\t");
+                    }
+                    System.out.println();
+                }
+                break;
             }
-            else if(menu == 3){
-                System.out.println(3);
+            // 2번: 좌상단->우하단 대각선 삭제 후 M X N Matrix 출력
+            else if (menuNum == 2) {
+                for (int i = 0; i < m; i++) {
+                    for (int j = 0; j < n; j++) {
+
+                        // 左上から右下に対角線上に消える　この時[0][0]. [1][1]...となる
+                        if (i == j) {
+                            System.out.print(" \t");
+                        } else {
+                            System.out.print("*\t");
+                        }
+                    }
+                    System.out.println();
+                }
             }
-            else { // 再入力となったとき、カウントを１減らして、次の＋＋でゲームカウントをそのままに保つ
-                gameCount--;
+            // 3번: 좌상단->우하단 + 우상단->좌하단 대각선 삭제 후 M X N Matrix 출력
+            else {
+                for (int i = 0; i < m; i++) {
+                    for (int j = 0; j < n; j++) {
+                        // 左上から右下に対角線上に消える　この時[0][0]. [1][1]...となる
+                        if (i == j || i + j == m - 1) {
+                            System.out.print(" \t");
+                        } else {
+                            System.out.print("*\t");
+                        }
+                    }
+                    System.out.println();
+                }
             }
-            gameCount++;
         }
+        gameCount++;
+        scan.close();
     }
 }
