@@ -1,6 +1,6 @@
 public class CaseTestForVSlotMachine {
     public static void main(String[] args) {
-        char[] rdCharArray = {'*', '-', '-', '*', '-', '-'};
+        char[] rdCharArray = {'*', '*', '*', '*', '-', '-'};
 
         // 연속된 연산자가 두 개일 경우
         // ++, 1점
@@ -49,50 +49,49 @@ public class CaseTestForVSlotMachine {
 //        System.out.println(score);
 
         // もし3つ続いたらscore up
-        boolean plus = false;
-        boolean mult = false;
-        boolean Star = false;
+//        boolean plus = false;
+//        boolean mult = false;
+//        boolean Star = false;
 
-        int checkplus = 0;
-        int checkmult = 0;
-        int checkStar = 0;
 
         int score = 0; // 点数
+        int count = 1;
 
-        for(int i = 0; i < rdCharArray.length; i++){ // 繰り返して重複を確認する
-            if(rdCharArray[i] == '-'){// もしインデックスにマイナスがあれば
-                // true判定
-                if(mult){
-                    checkmult++;
-                }
+        for(int i = 0; i < rdCharArray.length; i++) { // 繰り返して重複を確認する
 
-                if(checkmult == 2){
-                    score--;
+            if (i < rdCharArray.length - 1 && rdCharArray[i] == rdCharArray[i + 1]) {
+                count++;
+            } else {
+                if (count == 2) {
+                    switch (rdCharArray[i]) {
+                        case '+':
+                            score++;
+                            break;
+                        case '-':
+                            score--;
+                            break;
+                        case '*':
+                            score += 2;
+                            break;
+                    }
+                } else if (count >= 3) {
+                    switch (rdCharArray[i]) {
+                        case '+':
+                            score += 3;
+                            break;
+                        case '-':
+                            score -= 3;
+                            break;
+                        case '*':
+                            score += 5;
+                            break;
+                    }
                 }
-                mult = true;
-                // 判定とスコアの計算部分分けるといいかも　＊＊＊＊＊＊＊＊＊＊
+                count = 1;
             }
-//            else if(rdCharArray[i] == '+'){
-//                if(checkplus){
-//                    score++;
-//                    checkplus = false;
-//                    continue;
-//                }
-//                checkplus = true;
-//                checkmult = false;
-//                checkStar = false;
-//            }
-//            if(rdCharArray[i] == '*'){
-//                if(checkStar){
-//                    score += 2;
-//                    checkStar = false;
-//                    continue;
-//                }
-//                checkStar = true;
-//                checkmult = false;
-//                checkplus = false;
-//            }
         }
         System.out.println(score);
+
     }
 }
+
