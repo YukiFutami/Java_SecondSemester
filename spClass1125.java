@@ -60,9 +60,9 @@ public class spClass1125 {
             }
             //　メニュー２：入力された学生の目録を出力
             else if (choice == 2) {
-                for(int i = 0; i < studentCount; i++){
+                for(int i = 0; i < studentCount; i++) {
                     for (int j = 0; j < students[i].length; j++) {
-                        System.out.print(students[i][j] + "\t");
+                        System.out.println(students[i][j] + "\t");
                     }
                     System.out.println();
                 }
@@ -78,14 +78,13 @@ public class spClass1125 {
                 while(true){
                     System.out.println("삭제할 학생의 학번을 입력");
                     float delateSut = scan.nextFloat();
+                    delateSut = delateSut + 1;
                     for(int i = 0; i < students.length; i++){
-                        for(int j = 1; j < students[i].length; j++){
+                        for(int j = 1; j < delateSut - 1; j++){
                             if(delateSut == -1) {
                                 break;
-                            }
-                            else if(delateSut != j){
+                            } else if(delateSut != j){
                                 System.out.print("해당 학번이 존재하지 않습니다. 다시 입력해주세요.");
-                                continue;
                             }
                             else if (delateSut == j){
                                 for(int k = 0; k < students[i].length - i; i++){
@@ -101,32 +100,16 @@ public class spClass1125 {
                         }
                     }
                 }
-
-
             }
-
-
             //　メニュー４：プログラム終了
             else if(choice == 4){
                 System.out.println("프로그램 종료");
                 break;
             }
-
-
-
         }
-
-
-
         //　floatを使用する
         //　２時配列のサイズは３行６列
         //　行　学生データ数
         //　列　科目
-
-
-        //　メニュー２：入力された学生の目録を出力
-
-
-
     }
 }
